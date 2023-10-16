@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const mongSanitize = require("express-mongo-sanitize");
 const morgan = require("morgan");
+const expressError = require("./Utilities/ExpressError");
 const asyncHandler = require("express-async-handler");
+const Recipe = require("./models/recipe");
 
 //local
 const dbURL = "mongodb://localhost:27017/cook";
@@ -36,8 +38,23 @@ app.use(
   })
 );
 
-app.get("/home", async (req, res) => {
-  res.send("Hello hello");
+// app.get("/home", async (req, res) => {
+//   res.send("Hello hello");
+// });
+
+app.get("/firstrecipe", async (req, res) => {
+  const recipe = new Recipe({
+    title: "Oatmeal and eggs",
+    description:
+      "Hearty breakfast with complex carbs, good amount of protein, great way to start the day",
+    ingredients:
+      "Oatmeal, Cinnamon, Brown sugar, Eggs, Egg whites (optional), Cheese",
+
+    directions:
+      "Bring water to a boil, Add oatmeal, cinnamon, and brown sugar to a bowl and mix. Pour water onto the oatmeal stir until combined then set aside to thicken. In a seperate bowl beat eggs and egg whites. Add cheese and mix lightly. Add to a heated pan and scramble. Add scrambled eggs to the outmeal and enjoy",
+  });
+  await recipe.save();
+  res.send(recipe);
 });
 
 //Bottom
