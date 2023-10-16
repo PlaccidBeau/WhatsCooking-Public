@@ -41,7 +41,6 @@ app.use(
 // app.get("/home", async (req, res) => {
 //   res.send("Hello hello");
 // });
-
 app.get("/firstrecipe", async (req, res) => {
   const recipe = new Recipe({
     title: "Oatmeal and eggs",
@@ -56,6 +55,57 @@ app.get("/firstrecipe", async (req, res) => {
   await recipe.save();
   res.send(recipe);
 });
+
+app.get("/recipes", async (req, res) => {
+  const recipes = await Recipe.find();
+  res.render("recipe/index", { recipes });
+});
+
+//Add new recipe
+app.get("/recipes/new", (req, res) => {
+  res.render("recipe/new");
+});
+
+app.post("/recipes/new", async (req, res) => {
+  const recipe = new Recipe(req.body.recipe);
+  await recipe.save();
+  res.redirect(`/recipes/${recipe._id}`);
+});
+
+app.get(
+  "/recipes/:id",
+  asyncHandler(async (req, res) => {
+    const recipe = await Recipe.findById(req.params.id);
+    res.render("recipe/show", { recipe });
+  })
+);
+
+app.get(
+  "/recipes/:id/edit",
+  asyncHandler(async (req, res) => {
+    const recipe = await Recipe.findById(req.params.id);
+    res.render("recipe/edit", { recipe });
+  })
+);
+app.put(
+  "/recipes/:id/",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const recipe = await Recipe.findByIdAndUpdate(id, {
+      ...req.body.recipe,
+    });
+    res.redirect(`/recipes/${recipe._id}`);
+  })
+);
+
+app.delete(
+  "/recipes/:id/",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    await Recipe.findByIdAndDelete(id);
+    res.redirect("/recipes");
+  })
+);
 
 //Bottom
 app.all("*", (req, res, next) => {

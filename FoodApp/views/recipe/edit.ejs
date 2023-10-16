@@ -1,0 +1,82 @@
+<% layout('layout/boilerplate') -%> <% include('../partial/navbar.ejs') -%>
+<div class="row">
+  <h1 class="text-center">Edit Recipe</h1>
+  <div class="col-md-6 offset-md-3">
+    <form
+      action="/recipes/<%= recipe._id %>?_method=PUT"
+      class="row g-3 needs-validation"
+      novalidate
+      method="POST"
+    >
+      <div>
+        <div class="mb-3">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            name="recipe[title]"
+            id="title"
+            value="<%=recipe.title  %>"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="description"
+            >Description</label
+          >
+          <input
+            type="text"
+            name="recipe[description]"
+            id="description"
+            value="<%=recipe.description  %>"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="ingredients"
+            >Ingredients</label
+          >
+
+          <textarea
+            type="text"
+            name="recipe[ingredients]"
+            id="ingredients"
+            class="form-control"
+            required
+            cols="30"
+            rows="10"
+          >
+<%=recipe.ingredients  %></textarea
+          >
+        </div>
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="directions"
+            >Directions</label
+          >
+
+          <textarea
+            type="text"
+            name="recipe[directions]"
+            id="directions"
+            class="form-control"
+            required
+            cols="30"
+            rows="10"
+          >
+<%=recipe.directions  %></textarea
+          >
+        </div>
+        <button class="btn btn-success">Update recipe</button>
+      </div>
+    </form>
+    <a href="/recipes/<%=recipe._id  %>">Back to Recipe</a>
+  </div>
+</div>
+<% include('../partial/footer.ejs') -%>

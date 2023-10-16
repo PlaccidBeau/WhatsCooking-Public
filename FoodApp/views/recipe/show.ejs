@@ -14,5 +14,17 @@
       <h6><%= recipe.directions %></h6>
     </div>
   </div>
-  <% include('../partial/footer.ejs') -%>
 </div>
+<form
+  method="GET"
+  action="/recipes/<%= recipe._id %>/edit"
+>
+  <button class="btn btn-success">Edit</button>
+</form>
+<form
+  action="/recipes/<%= recipe._id  %>?_method=DELETE"
+  method="POST"
+>
+  <button class="btn btn-danger">Delete</button>
+</form>
+<% include('../partial/footer.ejs') -%>
