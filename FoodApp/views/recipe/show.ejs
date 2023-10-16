@@ -1,0 +1,18 @@
+<% layout('layout/boilerplate') -%> <% include('../partial/navbar.ejs') -%>
+<div class="row">
+  <div class="card mb-3 col-6">
+    <h2><%= recipe.title %></h2>
+    <h4>Description</h4>
+    <h6><%= recipe.description %></h6>
+    <div class="ingredients">
+      <!-- Ingredients -->
+      <h4>Ingredients</h4>
+      <h6><%= recipe.ingredients %></h6>
+    </div>
+    <div class="directions">
+      <h4>Directions</h4>
+      <h6><%= recipe.directions %></h6>
+    </div>
+  </div>
+  <% include('../partial/footer.ejs') -%>
+</div>

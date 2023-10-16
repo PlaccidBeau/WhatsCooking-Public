@@ -1,0 +1,78 @@
+<% layout('layout/boilerplate') -%> <% include('../partial/navbar.ejs') -%>
+<div class="row">
+  <h1 class="text-center">New Recipe</h1>
+  <div class="col-md-6 offset-md-3">
+    <form
+      class="needs-validation"
+      novalidate
+      method="POST"
+      action="/recipes/new"
+    >
+      <div class="mb-3">
+        <label
+          class="form-label"
+          for="title"
+          >Title</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="recipe[title]"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label
+          class="form-label"
+          for="description"
+          >Description</label
+        >
+        <input
+          class="form-control"
+          required
+          type="text"
+          name="recipe[description]"
+          id="description"
+        />
+      </div>
+      <div class="mb-3">
+        <label
+          class="form-label"
+          for="ingredients"
+          >Ingredients</label
+        >
+        <textarea
+          name="recipe[ingredients]"
+          class="form-control ingredientsInp"
+          id="ingredients"
+          cols="30"
+          rows="10"
+          required
+        ></textarea>
+      </div>
+      <div class="mb-3">
+        <label
+          class="form-label"
+          for="directions"
+          >Directions</label
+        >
+        <textarea
+          class="form-control"
+          name="recipe[directions]"
+          id="directions"
+          cols="30"
+          rows="10"
+        ></textarea>
+      </div>
+      <button
+        class="btn btn-success"
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+    <a href="/recipes">All Recipes</a>
+  </div>
+</div>
+<% include('../partial/footer.ejs') -%>
