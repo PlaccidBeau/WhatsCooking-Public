@@ -8,7 +8,7 @@ const morgan = require("morgan");
 const expressError = require("./Utilities/ExpressError");
 const asyncHandler = require("express-async-handler");
 const Recipe = require("./models/recipe");
-
+const Review = require("./models/review");
 //local
 const dbURL = "mongodb://localhost:27017/cook";
 
@@ -75,7 +75,7 @@ app.post("/recipes/new", async (req, res) => {
 app.get(
   "/recipes/:id",
   asyncHandler(async (req, res) => {
-    const recipe = await Recipe.findById(req.params.id);
+    const recipe = await Recipe.findById(req.params.id).populate("reviews");
     res.render("recipe/show", { recipe });
   })
 );
@@ -104,6 +104,30 @@ app.delete(
     const { id } = req.params;
     await Recipe.findByIdAndDelete(id);
     res.redirect("/recipes");
+  })
+);
+
+//Reviews
+app.post(
+  "/recipes/:id/reviews",
+  asyncHandler(async (req, res) => {
+    const recipe = await Recipe.findById(req.params.id);
+    const review = new Review(req.body.review);
+    recipe.reviews.push(review);
+    await review.save();
+    await recipe.save();
+    res.redirect(`/recipes/${recipe._id}`);
+    // res.send(recipe.reviews);
+  })
+);
+
+app.delete(
+  "/recipes/:id/reviews/:reviewId",
+  asyncHandler(async (req, res) => {
+    const { id, reviewId } = req.params;
+    await Recipe.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/recipes/${id}`);
   })
 );
 
