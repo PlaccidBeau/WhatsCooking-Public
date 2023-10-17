@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("../models/review");
 
-const ImageSchema = new Schema({
-  url: String,
-  filename: String,
-});
+// const ImageSchema = new Schema({
+//   url: String,
+//   filename: String,
+// });
 
 const RecipeSchema = new Schema({
   title: String,
