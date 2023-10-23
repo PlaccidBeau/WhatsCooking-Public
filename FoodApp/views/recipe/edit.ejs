@@ -6,6 +6,7 @@
       action="/recipes/<%= recipe._id %>?_method=PUT"
       class="row g-3 needs-validation"
       novalidate
+      enctype="multipart/form-data"
       method="POST"
     >
       <div>
@@ -34,6 +35,24 @@
             class="form-control"
             required
           />
+        </div>
+        <div class="mb-3">
+          <label for="images">Upload Images</label>
+          <div class="input-group custom-file">
+            <input
+              type="file"
+              class="form-control"
+              name="recipe[image]"
+              value="recipe.images"
+              id="images"
+              multiple
+            />
+            <label
+              class="input-group-text custom-file-label"
+              for="images"
+              >Upload Images</label
+            >
+          </div>
         </div>
         <div class="mb-3">
           <label
@@ -73,10 +92,33 @@
 <%=recipe.directions  %></textarea
           >
         </div>
-        <button class="btn btn-success">Update recipe</button>
+        <div class="mb-3">
+          <% recipe.images.forEach(function(img, i) {%>
+
+          <div class="form-check-inline">
+            <input
+              type="checkbox"
+              id="image-<%= i %>"
+              name="deleteImages[]"
+              value="<%= img.filename %>"
+            />
+            <label for="image-<%= i %>">Delete</label>
+            <img
+              src="<%= img.thumbnail %>"
+              class="img-thumbnail"
+              alt=""
+            />
+          </div>
+          <% }) %>
+        </div>
+        <button class="btn btn-success mb-2">Update recipe</button>
       </div>
     </form>
-    <a href="/recipes/<%=recipe._id  %>">Back to Recipe</a>
+    <a
+      href="/recipes/<%=recipe._id  %>"
+      class="btn btn-primary"
+      >Back to Recipe</a
+    >
   </div>
 </div>
 <% include('../partial/footer.ejs') -%>

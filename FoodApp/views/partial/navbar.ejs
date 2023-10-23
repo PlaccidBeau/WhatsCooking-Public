@@ -6,7 +6,7 @@
     <a
       class="navbar-brand"
       href="#"
-      >Vou Beau Chef</a
+      >WhatsCooking</a
     >
     <button
       class="navbar-toggler"
@@ -28,7 +28,7 @@
           <a
             class="nav-link active"
             aria-current="page"
-            href="/home"
+            href="/"
             >Home</a
           >
         </li>
@@ -47,8 +47,25 @@
           >
         </li>
       </ul>
-      <div class="navbar-nav ml-auto">
-        <!-- add currentUser login when operational -->
+      <div class="navbar-nav ms-auto">
+        <% if(!currentUser) {%>
+        <a
+          class="nav-link"
+          href="/login"
+          >Login</a
+        >
+        <a
+          class="nav-link"
+          href="/register"
+          >Register</a
+        >
+        <% }else{ %>
+        <a
+          class="nav-link"
+          href="/logout"
+          >Logout</a
+        >
+        <% } %>
       </div>
     </div>
   </div>

@@ -7,6 +7,7 @@
       novalidate
       method="POST"
       action="/recipes/new"
+      enctype="multipart/form-data"
     >
       <div class="mb-3">
         <label
@@ -37,6 +38,24 @@
         />
       </div>
       <div class="mb-3">
+        <label for="images">Upload Images</label>
+        <div class="input-group custom-file">
+          <input
+            type="file"
+            class="form-control"
+            name="recipe[image]"
+            value="recipe.images"
+            id="images"
+            multiple
+          />
+          <label
+            class="input-group-text custom-file-label"
+            for="images"
+            >Upload Images</label
+          >
+        </div>
+      </div>
+      <div class="mb-3">
         <label
           class="form-label"
           for="ingredients"
@@ -63,16 +82,21 @@
           id="directions"
           cols="30"
           rows="10"
+          required
         ></textarea>
       </div>
       <button
-        class="btn btn-success"
+        class="btn btn-success mb-2"
         type="submit"
       >
         Submit
       </button>
     </form>
-    <a href="/recipes">All Recipes</a>
+    <a
+      href="/recipes"
+      class="btn btn-primary"
+      >All Recipes</a
+    >
   </div>
 </div>
 <% include('../partial/footer.ejs') -%>

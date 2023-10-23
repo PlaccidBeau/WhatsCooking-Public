@@ -1,6 +1,5 @@
 <% layout('layout/boilerplate') -%> <% include('../partial/navbar.ejs') -%>
-<h1>All Recipes</h1>
-<div><a href="/recipes/new">Add Recipe</a></div>
+<h1 style="text-align: center">All Recipes</h1>
 
 <% for (let recipe of recipes){ %>
 <div
@@ -9,15 +8,30 @@
 >
   <div class="row">
     <div class="col-md-4">
-      <!-- Enter image here -->
+      <% if(recipe.images.length) {%>
+      <img
+        src="<%=recipe.images[0].url  %>"
+        class="img-fluid"
+        alt=""
+      />
+      <% } else if(recipe.images.length == 0) { %>
+      <img
+        src="https://res.cloudinary.com/dpakqvhn6/image/upload/v1697812888/fi1ct54ag3cemzranouc.png"
+        class="img-fluid"
+        alt=""
+      />
+      <% } %>
     </div>
-    <div class="card-body">
-      <h5 class="card-title">
-        <a href="/recipes/<%=recipe._id  %>"><%=recipe.title %></a>
-      </h5>
-      <p class="card-title"><%=recipe.description %></p>
-      <p class="card-text"></p>
-      <div class="col-mg-8"></div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%=recipe.title %></h5>
+        <p class="card-text"><%=recipe.description %></p>
+        <a
+          class="btn btn-primary"
+          href="/recipes/<%=recipe._id%>"
+          >View <%=recipe.title%></a
+        >
+      </div>
     </div>
   </div>
 </div>
