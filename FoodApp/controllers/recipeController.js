@@ -4,7 +4,7 @@ const expressError = require("../Utilities/ExpressError");
 const { cloudinary } = require("../cloudinary");
 // recipe;
 exports.index_page = asyncHandler(async (req, res) => {
-  const recipes = await Recipe.find();
+  const recipes = await Recipe.find().populate("author");
   res.render("recipe/index", { recipes });
 });
 

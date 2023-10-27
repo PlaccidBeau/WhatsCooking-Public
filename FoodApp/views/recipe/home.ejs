@@ -1,104 +1,150 @@
-<% layout('layout/template') %>
-<link
-  rel="stylesheet"
-  href="/stylesheets/app.css"
-/>
-
-<div
-  id="carouselExampleIndicators"
-  class="carousel slide"
->
-  <div class="cover-container">
-    <!-- data-bs-ride="carousel" -->
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="0"
-        class="active"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="2"
-        aria-label="Slide 3"
-      ></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item carousel-image bg-img-1 active">
-        <div
-          class="carousel-caption d-none d-md-block mx-auto p-2"
-          style="height: 450px"
-        >
-          <h2>Welcome to WhatsCooking</h2>
-        </div>
-
-        <!-- <img
-          src="/javascript/breakfast1.jpg"
-          class="d-block w-100"
-          alt="..."
-        /> -->
-      </div>
-      <div class="carousel-item carousel-image bg-img-2">
-        <div
-          class="carousel-caption d-none d-md-block mx-auto p-2"
-          style="height: 450px"
-        >
-          <h2>Check out our many recipes</h2>
-        </div>
-        <!-- <img
-          src="/javascript/turkeysandwich.jpg"
-          class="d-block w-100"
-          alt="..."
-        /> -->
-      </div>
-      <div class="carousel-item carousel-image bg-img-3">
-        <div
-          class="carousel-caption d-none d-md-block mx-auto p-2"
-          style="height: 450px"
-        >
-          <h2>Feel free to share your favorite recipes</h2>
-        </div>
-        <!-- <img
-          src="/javascript/chickenparm.jpg"
-          class="d-block w-100"
-          alt="..."
-        /> -->
-      </div>
-    </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="prev"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="/stylesheets/app.css"
+    />
+  </head>
+  <body>
+    <%-include('../partial/navbar') %> <%-include('../partial/flash') %>
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
     >
-      <span
-        class="carousel-control-prev-icon"
-        aria-hidden="true"
-      ></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="next"
-    >
-      <span
-        class="carousel-control-next-icon"
-        aria-hidden="true"
-      ></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-    <div />
-    <!-- </div> -->
-  </div>
-</div>
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item carousel-image active d-lg-flex">
+          <img
+            src="https://res.cloudinary.com/dpakqvhn6/image/upload/v1698332005/rr19efubyzncojq0n3xt.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div
+            class="carousel-caption d-none d-md-block mx-auto p-2"
+            style="height: 50%"
+            id="img-text"
+          >
+            <h2>Welcome to WhatsCooking</h2>
+          </div>
+        </div>
+        <div class="carousel-item carousel-image">
+          <img
+            src="https://res.cloudinary.com/dpakqvhn6/image/upload/v1698349247/d0dxjdgz88vsnlhxyj7n.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div
+            class="carousel-caption d-none d-md-block mx-auto p-2"
+            style="height: 50%"
+          >
+            <h2>Browse our many recipes</h2>
+          </div>
+        </div>
+        <div class="carousel-item carousel-image">
+          <img
+            src="https://res.cloudinary.com/dpakqvhn6/image/upload/v1698245868/Recipe/blyot1xflypvd7zzztqs.jpg"
+            class="d-block w-100 img-s"
+            alt="..."
+          />
+          <div
+            class="carousel-caption d-none d-md-block mx-auto p-2"
+            style="height: 50%"
+          >
+            <h2>Share your favorite recipes</h2>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span
+          class="carousel-control-prev-icon"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span
+          class="carousel-control-next-icon"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <%- include('../partial/footer') %>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+      "use strict";
+
+      bsCustomFileInput.init();
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll(".needs-validation");
+
+      // Loop over them and prevent submission
+      Array.from(forms).forEach((form) => {
+        form.addEventListener(
+          "submit",
+          (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })();
+  </script>
+</html>

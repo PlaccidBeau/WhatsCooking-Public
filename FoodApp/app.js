@@ -18,7 +18,8 @@ const recipeRoute = require("./routes/recipe");
 const reviewRoute = require("./routes/review");
 const userRoutes = require("./routes/user");
 const User = require("./models/user");
-//secret file is my dotenv
+
+//secret file is my dotenv file holding my mongodb connect string and cloudinary api keys
 const secret = require("./secret");
 const dbURL = secret.DB_URL || "mongodb://localhost:27017/cook";
 mongoose.set("strictQuery", false);
